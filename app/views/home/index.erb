@@ -1,0 +1,10 @@
+<h1> World Time</h1>
+
+<p> Enter location</p>
+
+<%= form_tag locations_path, :method => :get do %>
+    <p>
+      <%= text_field_tag :address, params[:address] %>
+      <%= submit_tag "Search Near", :name => nil %>
+    </p>
+<% end %>

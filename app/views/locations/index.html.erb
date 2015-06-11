@@ -1,0 +1,53 @@
+<h1>Locations</h1>
+
+
+
+
+
+<table>
+  <thead>
+
+    <tr>
+      <table style="width: 94%">
+      <th>Address</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Current Time</th>
+        <th>Daylight Savings</th>
+
+      <th>wiki</th>
+
+      <th colspan="5"></th>
+      </table>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @locations.each do |location| %>
+
+      <tr style="width: 100%">
+          <table style="width: 100%">
+          <td style="width: 13%"><%= location.address %></td>
+          <td style="width: 13%"><%= location.latitude %></td>
+            <td style="width: 17%"><%= location.longitude %></td>
+
+            <td hidden> <%=time_zone = GeoNamesAPI::TimeZone.find(location.latitude,location.longitude)%></td>
+            <td style="width: 27%"><%=time_zone.time %></td>
+
+
+            <td style="width: 22%"><%=time_zone.dst?(Time.now)%> <%=image_tag("http://www.ikea.com/us/en/images/products/bondis-wall-clock-black__0096033_PE235389_S1.JPG")%></td>
+
+            <td style="width: 20%"><%=link_to(location.address,"http://en.wikipedia.org/wiki/#{location.address}")%></td>
+          <td><%= link_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </table>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_location_path %>
+
