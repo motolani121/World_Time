@@ -1,1 +1,2 @@
 This Website make use of geokit, geonames_api, and geocose to provide the user with the locations of any inputted address. It will also provide a wiki link of the location and information about daylight savings. 
+teet
